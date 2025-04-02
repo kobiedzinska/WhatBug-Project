@@ -17,7 +17,7 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
-    public boolean loginUser(String username, String password){
+    public String loginUser(String username, String password){
         return clientRepository.loginUser(username, password);
     }
 }

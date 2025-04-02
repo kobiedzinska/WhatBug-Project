@@ -28,9 +28,9 @@ public class Bug {
     private String subspecies;
     private String description;
     private String imageURL;
-    private float avg_lifespan;
-    private float avg_size;
-    private float avg_weight;
-    private float protein;
+    private Float avg_lifespan;
+    private Float avg_size;
+    private Float avg_weight;
+    private Float protein;
     private Date created_at;
 }

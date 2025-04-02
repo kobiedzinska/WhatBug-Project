@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
     @Query(value = "SELECT floginUser(:name, :password)", nativeQuery = true)
-    boolean loginUser(@Param("name") String name, @Param("password") String password);
+    String loginUser(@Param("name") String name, @Param("password") String password);
 }

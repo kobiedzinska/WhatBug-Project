@@ -17,7 +17,7 @@ public class LoginAttempt {
     private Long id;
 
     private Date last_attempt;
-    private boolean success;
+    private Boolean success;
 
     @ManyToOne
     @JoinColumn(name = "client_id")

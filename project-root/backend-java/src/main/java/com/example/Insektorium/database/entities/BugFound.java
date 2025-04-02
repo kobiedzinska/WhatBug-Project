@@ -1,5 +1,6 @@
 package com.example.Insektorium.database.entities;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,8 +18,9 @@ public class BugFound {
     private Long id;
 
     private String name;
-    private double latitude;
-    private double longtitude;
+
+    private Double latitude;
+    private Double longtitude;
     private Date created_at;
 
     @ManyToOne
@@ -28,4 +30,15 @@ public class BugFound {
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
+
+    @Override
+    public String toString() {
+        return "BugFound{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", latitude=" + latitude +
+                ", longtitude=" + longtitude +
+                ", created_at=" + created_at +
+                '}';
+    }
 }
