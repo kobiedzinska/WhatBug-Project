@@ -1,4 +1,4 @@
-package com.example.Insektorium.database.entities;
+package com.example.Insektorium.database.entities.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;

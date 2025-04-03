@@ -1,8 +1,17 @@
 package com.example.Insektorium.database.controllers;
 
+import com.example.Insektorium.database.entities.dtos.ClientDTO;
+import com.example.Insektorium.database.entities.entities.Client;
 import com.example.Insektorium.database.services.ClientService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Arrays;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -15,9 +24,26 @@ public class ClientController {
     }
 
 
-/*    @RequestBody("/login")
-    public String login(@RequestBody String username, @RequestBody String password){}
 
-    @RequestBody("/register")
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody ClientDTO clientDTO){
+        System.out.println(clientDTO);
+        if(clientDTO.getName() == null || clientDTO.getPassword() == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Client client = new Client();
+        if(clientService.loginUser(clientDTO.getName(), clientDTO.getPassword())!= null) {
+            List<String> args = Arrays.asList(clientService.loginUser(clientDTO.getName(), clientDTO.getPassword()).split(","));
+
+            client.setId(Long.parseLong(args.get(0)));
+            client.setName(args.get(1));
+            client.setRole(args.get(2));
+
+            System.out.println(client);
+        }
+        return new ResponseEntity<>(clientService.loginUser(clientDTO.getName(), clientDTO.getPassword()), HttpStatus.OK);
+    }
+
+    /*@RequestMapping("/register")
     public String register(@RequestBody String username, @RequestBody String password, @RequestBody String role){}*/
 }

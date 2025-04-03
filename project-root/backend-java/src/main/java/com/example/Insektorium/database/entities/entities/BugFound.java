@@ -1,38 +1,42 @@
-package com.example.Insektorium.database.entities;
+package com.example.Insektorium.database.entities.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.util.List;
 
 @NoArgsConstructor
 @Entity
 @Data
-@Table(name = "Clients")
-public class Client {
+@Table(name = "Bugs_Found")
+public class BugFound {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-    private String password;
-    private String role;
+
+    private Double latitude;
+    private Double longtitude;
     private Date created_at;
 
+    @ManyToOne
+    @JoinColumn(name = "bug_id", nullable = false)
+    private Bug bug;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BugFound> foundBugs;
+    @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
+    private Client client;
 
     @Override
     public String toString() {
-        return "Client{" +
+        return "BugFound{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
+                ", latitude=" + latitude +
+                ", longtitude=" + longtitude +
                 ", created_at=" + created_at +
                 '}';
     }
