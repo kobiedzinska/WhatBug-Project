@@ -1,6 +1,5 @@
-package com.example.Insektorium.database.entities;
+package com.example.Insektorium.database.entities.entities;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;

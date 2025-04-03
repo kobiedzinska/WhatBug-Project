@@ -1,6 +1,6 @@
 package com.example.Insektorium.database.services;
 
-import com.example.Insektorium.database.entities.BugFound;
+import com.example.Insektorium.database.entities.entities.BugFound;
 import com.example.Insektorium.database.repositories.BugFoundRepository;
 import org.springframework.stereotype.Service;
 
