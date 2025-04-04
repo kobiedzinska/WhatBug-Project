@@ -2,19 +2,19 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\build\windows\x64\x64\Release\ZERO_CHECK</FullPath>
+      <FullPath>C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\build\windows\x64\x64\Release\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\build\windows\x64\flutter\x64\Release\flutter_assemble</FullPath>
+      <FullPath>C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\build\windows\x64\flutter\x64\Release\flutter_assemble</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\build\windows\x64\runner\Release\frontend_flutter.exe</FullPath>
+      <FullPath>C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\build\windows\x64\runner\Release\frontend_flutter.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\build\windows\x64\x64\Release\ALL_BUILD</FullPath>
+      <FullPath>C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\build\windows\x64\x64\Release\ALL_BUILD</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\build\windows\x64\x64\Release\INSTALL</FullPath>
+      <FullPath>C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\build\windows\x64\x64\Release\INSTALL</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

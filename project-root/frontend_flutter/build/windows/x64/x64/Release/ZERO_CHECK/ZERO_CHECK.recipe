@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\build\windows\x64\x64\Release\ZERO_CHECK</FullPath>
+      <FullPath>C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\build\windows\x64\x64\Release\ZERO_CHECK</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

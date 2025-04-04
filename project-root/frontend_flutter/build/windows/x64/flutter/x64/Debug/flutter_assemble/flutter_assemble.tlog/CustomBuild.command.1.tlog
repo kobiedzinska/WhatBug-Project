@@ -1,6 +1,6 @@
-^C:\USERS\ZUZUZ\VSCODEPROJECTS\INSEKTORIUM\WHATBUG-PROJECT\FRONTEND_FLUTTER\BUILD\WINDOWS\X64\CMAKEFILES\4F93C059E28C83CB5769ABA95FA4460E\FLUTTER_WINDOWS.DLL.RULE
+^C:\USERS\ZUZUZ\VSCODEPROJECTS\INSEKTORIUM\WHATBUG-PROJECT\PROJECT-ROOT\FRONTEND_FLUTTER\BUILD\WINDOWS\X64\CMAKEFILES\FCBC02C255260119B9F4190CC502F2C4\FLUTTER_WINDOWS.DLL.RULE
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\Users\zuzuz\flutter PROJECT_DIR=C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter FLUTTER_ROOT=C:\Users\zuzuz\flutter FLUTTER_EPHEMERAL_DIR=C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\windows\flutter\ephemeral PROJECT_DIR=C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter FLUTTER_TARGET=C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\lib\main.dart DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\.dart_tool\package_config.json C:/Users/zuzuz/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\Users\zuzuz\flutter PROJECT_DIR=C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter FLUTTER_ROOT=C:\Users\zuzuz\flutter FLUTTER_EPHEMERAL_DIR=C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\windows\flutter\ephemeral PROJECT_DIR=C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter FLUTTER_TARGET=C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\lib\main.dart DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\.dart_tool\package_config.json C:/Users/zuzuz/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -8,7 +8,7 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\USERS\ZUZUZ\VSCODEPROJECTS\INSEKTORIUM\WHATBUG-PROJECT\FRONTEND_FLUTTER\BUILD\WINDOWS\X64\CMAKEFILES\474DB659833D82CB6794766B9ACAEF43\FLUTTER_ASSEMBLE.RULE
+^C:\USERS\ZUZUZ\VSCODEPROJECTS\INSEKTORIUM\WHATBUG-PROJECT\PROJECT-ROOT\FRONTEND_FLUTTER\BUILD\WINDOWS\X64\CMAKEFILES\4FD8B119DF3927B956A4A7569937AD77\FLUTTER_ASSEMBLE.RULE
 setlocal
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -16,9 +16,9 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\USERS\ZUZUZ\VSCODEPROJECTS\INSEKTORIUM\WHATBUG-PROJECT\FRONTEND_FLUTTER\WINDOWS\FLUTTER\CMAKELISTS.TXT
+^C:\USERS\ZUZUZ\VSCODEPROJECTS\INSEKTORIUM\WHATBUG-PROJECT\PROJECT-ROOT\FRONTEND_FLUTTER\WINDOWS\FLUTTER\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/frontend_flutter/windows -BC:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/frontend_flutter/build/windows/x64 --check-stamp-file C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/frontend_flutter/build/windows/x64/flutter/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/windows -BC:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64 --check-stamp-file C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/flutter/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
