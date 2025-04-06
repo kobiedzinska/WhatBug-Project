@@ -42,6 +42,11 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/cmake_install.cmake")
 endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/plugins/gal/cmake_install.cmake")
+endif()
+
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Runtime" OR NOT CMAKE_INSTALL_COMPONENT)
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
@@ -141,6 +146,40 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Runtime" OR NOT CMAKE_INSTALL_COMPONENT)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     file(INSTALL DESTINATION "C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Release" TYPE FILE FILES "C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/windows/flutter/ephemeral/flutter_windows.dll")
+  endif()
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Runtime" OR NOT CMAKE_INSTALL_COMPONENT)
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
+    list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+     "C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Debug/gal_plugin.dll")
+    if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+      message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+    endif()
+    if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+      message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+    endif()
+    file(INSTALL DESTINATION "C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Debug" TYPE FILE FILES "C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/plugins/gal/Debug/gal_plugin.dll")
+  elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Pp][Rr][Oo][Ff][Ii][Ll][Ee])$")
+    list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+     "C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Profile/gal_plugin.dll")
+    if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+      message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+    endif()
+    if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+      message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+    endif()
+    file(INSTALL DESTINATION "C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Profile" TYPE FILE FILES "C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/plugins/gal/Profile/gal_plugin.dll")
+  elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+     "C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Release/gal_plugin.dll")
+    if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+      message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+    endif()
+    if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+      message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+    endif()
+    file(INSTALL DESTINATION "C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Release" TYPE FILE FILES "C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/plugins/gal/Release/gal_plugin.dll")
   endif()
 endif()
 
@@ -253,12 +292,20 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Runtime" OR NOT CMAKE_INSTALL_COMPONENT)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
-  set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
+  if(CMAKE_INSTALL_COMPONENT MATCHES "^[a-zA-Z0-9_.+-]+$")
+    set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
+  else()
+    string(MD5 CMAKE_INST_COMP_HASH "${CMAKE_INSTALL_COMPONENT}")
+    set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INST_COMP_HASH}.txt")
+    unset(CMAKE_INST_COMP_HASH)
+  endif()
 else()
   set(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 endif()
 
-string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
+endif()
