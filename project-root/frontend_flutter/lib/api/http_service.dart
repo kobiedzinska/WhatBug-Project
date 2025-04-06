@@ -9,11 +9,7 @@ class Bug {
   Bug({required this.id, required this.name, required this.phylum});
 
   factory Bug.fromJson(Map<String, dynamic> json) {
-    return Bug(
-      id: json['id'],
-      name: json['name'],
-      phylum: json['phylum'],
-    );
+    return Bug(id: json['id'], name: json['name'], phylum: json['phylum']);
   }
 }
 

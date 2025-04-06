@@ -8,3 +8,6 @@ C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_
 C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/CMakeFiles/frontend_flutter.dir
 C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/CMakeFiles/INSTALL.dir
 C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/CMakeFiles/ALL_BUILD.dir
+C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/plugins/gal/CMakeFiles/gal_plugin.dir
+C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/plugins/gal/CMakeFiles/INSTALL.dir
+C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/plugins/gal/CMakeFiles/ALL_BUILD.dir
