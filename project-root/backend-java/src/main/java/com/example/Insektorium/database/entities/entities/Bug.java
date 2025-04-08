@@ -3,17 +3,20 @@ package com.example.Insektorium.database.entities.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.NotFound;
 
 import java.util.Date;
 
 @NoArgsConstructor
 @Entity
 @Data
-@Table(name = "Bugs")
+@Table(name = "bugs")
 public class Bug {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(length = 20)
     private Long id;
 
     private String name;
@@ -25,11 +28,22 @@ public class Bug {
     private String genus;
     private String species;
     private String subspecies;
-    private String description;
-    private String imageURL;
-    private Float avg_lifespan;
-    private Float avg_size;
-    private Float avg_weight;
+
+    @Column(name = "avg_lifespan")
+    private Float avgLifespan;
+    @Column(name = "avg_size")
+    private Float avgSize;
+    @Column(name = "avg_weight")
+    private Float avgWeight;
     private Float protein;
-    private Date created_at;
+
+    @Column(name = "created_at", updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
+    private Date createdAt;
+
+    @Column(columnDefinition = "BLOB")
+    private String imageBit;
+    @Column(length = 255)
+    private String description;
 }

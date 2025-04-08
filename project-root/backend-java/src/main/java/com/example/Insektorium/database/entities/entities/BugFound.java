@@ -28,8 +28,8 @@ public class BugFound {
     @Column(columnDefinition = "POINT", nullable = false)
     private Point location; // do przechowywania współrzędnych geograficznych. Funkcje do tworzenia w database/geometryUtils
 
-    private double latitude;    // narazie je zostawiam
-    private double longitude;
+    private Double latitude;    // narazie je zostawiam
+    private Double longitude;
 
     @Column(name = "created_at", columnDefinition = "timestamp default now()")
     private LocalDateTime createdAt;
