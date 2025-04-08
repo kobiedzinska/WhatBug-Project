@@ -14,4 +14,6 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 
     @Query(value = "SELECT floginUser(:username, :password)", nativeQuery = true)
     String floginUser(@Param("username") String username, @Param("password") String password);
+
+    Client findClientByName(String name);
 }

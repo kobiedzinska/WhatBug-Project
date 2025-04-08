@@ -25,4 +25,6 @@ public class BugFoundController {
     ResponseEntity<?> getAllBugs(@RequestParam Long client_id) {
         return new ResponseEntity<>(bugFoundService.getAllByClient_Id(client_id), HttpStatus.OK);
     }
+
+
 }
