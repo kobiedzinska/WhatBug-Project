@@ -15,8 +15,9 @@ public class LoginAttempt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Date last_attempt;
+    @Column(name = "attempt_time", columnDefinition = "timestamp default now()", updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date attemptTime;
     private Boolean success;
 
     @ManyToOne
