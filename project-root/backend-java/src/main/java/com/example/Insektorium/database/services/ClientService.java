@@ -20,4 +20,8 @@ public class ClientService {
     public String loginUser(String username, String password){
         return clientRepository.loginUser(username, password);
     }
+
+    public Client findClientByName(String name){
+        return clientRepository.findClientByName(name);
+    }
 }

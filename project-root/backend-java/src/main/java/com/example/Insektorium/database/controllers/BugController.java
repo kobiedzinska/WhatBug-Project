@@ -24,7 +24,10 @@ public class BugController {
         return new ResponseEntity<>(bugService.getAllBugs(), HttpStatus.OK);
     }
 
-
+    @GetMapping("/{id}")
+    ResponseEntity<?> getBugById(@PathVariable Long id){
+        return new ResponseEntity<>(bugService.getBugById(id), HttpStatus.OK);
+    }
 
 
 }
