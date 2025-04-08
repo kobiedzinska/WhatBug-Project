@@ -1,6 +1,6 @@
 package com.example.Insektorium.database.services;
 
-import com.example.Insektorium.database.entities.Bug;
+import com.example.Insektorium.database.entities.entities.Bug;
 import com.example.Insektorium.database.repositories.BugRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

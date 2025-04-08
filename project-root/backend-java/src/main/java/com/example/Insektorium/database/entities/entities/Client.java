@@ -1,12 +1,10 @@
-package com.example.Insektorium.database.entities;
+package com.example.Insektorium.database.entities.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.security.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @NoArgsConstructor

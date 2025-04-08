@@ -1,6 +1,6 @@
 package com.example.Insektorium.database.services;
 
-import com.example.Insektorium.database.entities.Client;
+import com.example.Insektorium.database.entities.entities.Client;
 import com.example.Insektorium.database.repositories.ClientRepository;
 
 import org.springframework.stereotype.Service;
@@ -19,5 +19,10 @@ public class ClientService {
 
     public String loginUser(String username, String password){
         return clientRepository.loginUser(username, password);
+    }
+
+
+    public Client findClientByName(String name){
+        return clientRepository.findClientByUsername(name);
     }
 }
