@@ -32,7 +32,7 @@ public class ClientController {
         if(clientService.loginUser(clientDTO.getName(), clientDTO.getPassword())!= null) {
             List<String> args = Arrays.asList(clientService.loginUser(clientDTO.getName(), clientDTO.getPassword()).split(","));
             client.setId(Long.parseLong(args.get(0)));
-            client.setName(args.get(1));
+            client.setUsername(args.get(1));
             client.setRole(args.get(2));
 
             System.out.println(client);
