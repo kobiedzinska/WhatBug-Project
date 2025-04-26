@@ -25,15 +25,15 @@ public class ClientController {
 
 
 
-    @PostMapping("/login")
+    /*@PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody ClientDTO clientDTO){
         System.out.println(clientDTO);
-        if(clientDTO.getName() == null || clientDTO.getPassword() == null) {
+        if(clientDTO.getUsername() == null || clientDTO.getPassword() == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Client client = new Client();
-        if(clientService.loginUser(clientDTO.getName(), clientDTO.getPassword())!= null) {
-            List<String> args = Arrays.asList(clientService.loginUser(clientDTO.getName(), clientDTO.getPassword()).split(","));
+        if(clientService.loginUser(clientDTO.getUsername(), clientDTO.getPassword())!= null) {
+            List<String> args = Arrays.asList(clientService.loginUser(clientDTO.getUsername(), clientDTO.getPassword()).split(","));
             client.setId(Long.parseLong(args.get(0)));
             client.setUsername(args.get(1));
             client.setRole(args.get(2));
@@ -41,11 +41,11 @@ public class ClientController {
             System.out.println(client);
         }
         return new ResponseEntity<>(client, HttpStatus.OK);
-    }
+    }*/
 
     @RequestMapping("/register")
     public ResponseEntity<?> register(@RequestBody ClientDTO clientDTO){
-        if(clientService.findClientByName(clientDTO.getName())!=null){
+        if(clientService.findClientByName(clientDTO.getUsername())!=null){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         return new ResponseEntity<>(clientDTO, HttpStatus.OK);
