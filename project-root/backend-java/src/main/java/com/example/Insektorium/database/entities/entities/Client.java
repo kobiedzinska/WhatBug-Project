@@ -49,6 +49,7 @@ public class Client {
         return "Client{" +
                 "id=" + id +
                 ", name='" + username + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
                 ", created_at=" + createdAt +
