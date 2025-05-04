@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_flutter/screens/home_screen.dart';
+import 'package:frontend_flutter/screens/welcome_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -16,7 +16,7 @@ class MainApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF5F6C38)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Insektorium'),
+      home: const WelcomePage(title: 'Insektorium'),
       debugShowCheckedModeBanner: false,
     );
   }

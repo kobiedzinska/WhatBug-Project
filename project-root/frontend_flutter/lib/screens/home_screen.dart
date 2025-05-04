@@ -3,30 +3,25 @@ import 'package:frontend_flutter/screens/all_bugs_screen.dart';
 import 'package:frontend_flutter/screens/camera_screen.dart';
 import 'package:frontend_flutter/utilities/my_app_bar.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
   void openCameraScreen() {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => const CameraScreen(),
-      ),
+      MaterialPageRoute(builder: (context) => const CameraScreen()),
     );
   }
 
   void goToBugsScreen() {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => const AllBugsScreen(),
-      ),
+      MaterialPageRoute(builder: (context) => const AllBugsScreen()),
     );
   }
 
@@ -35,25 +30,42 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: const MyAppBar(),
       body: Center(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Text(
-            'welcome to our app',
-            style: TextStyle(fontSize: 25),
-          ),
-          const Text(
-            '☆*: .｡. o(≧▽≦)o .｡.:*☆',
-            style: TextStyle(fontSize: 25),
-          ),
-          ElevatedButton(
-            onPressed: goToBugsScreen,
-            child: const Icon(Icons.bug_report),
-          ),
-        ]),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    children: [
+                      const Text(
+                        'welcome to our app',
+                        style: TextStyle(fontSize: 25),
+                      ),
+                      const Text(
+                        '☆*: .｡. o(≧▽≦)o .｡.:*☆',
+                        style: TextStyle(fontSize: 25),
+                      ),
+                    ],
+                  ),
+                  Image(image: AssetImage('lib/images/appIcon.png')),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: openCameraScreen,
-        tooltip: 'Camera',
-        child: const Icon(Icons.camera_alt),
+
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(onPressed: () {}, icon: const Icon(Icons.home)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.bug_report)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
+          ],
+        ),
       ),
     );
   }
