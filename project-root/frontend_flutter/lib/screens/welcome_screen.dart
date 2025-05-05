@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_flutter/screens/home_screen.dart';
-import 'package:frontend_flutter/screens/login_screen.dart';
-import 'package:frontend_flutter/screens/register_screen.dart';
 import 'package:frontend_flutter/utilities/my_app_bar.dart';
+import 'package:frontend_flutter/utilities/navigation.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key, required this.title});
@@ -13,29 +11,6 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
-  void goToLoginScreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const LoginScreen()),
-    );
-  }
-
-  void goToRegisterScreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const RegisterScreen()),
-    );
-  }
-
-  void goToHomePage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,7 +49,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     width: MediaQuery.of(context).size.height * 0.20,
                     height: MediaQuery.of(context).size.height * 0.08,
                     child: ElevatedButton(
-                      onPressed: goToLoginScreen,
+                      onPressed: () => goToLoginScreen(context),
                       child: const Text(
                         'Zaloguj',
                         style: TextStyle(fontSize: 20),
@@ -88,7 +63,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     width: MediaQuery.of(context).size.height * 0.20,
                     height: MediaQuery.of(context).size.height * 0.08,
                     child: ElevatedButton(
-                      onPressed: goToRegisterScreen,
+                      onPressed: () => goToRegisterScreen(context),
                       child: const Text(
                         'Zarejestruj',
                         style: TextStyle(fontSize: 20),
@@ -103,7 +78,7 @@ class _WelcomePageState extends State<WelcomePage> {
               child: SizedBox(
                 height: MediaQuery.of(context).size.height * 0.06,
                 child: ElevatedButton(
-                  onPressed: goToHomePage,
+                  onPressed: () => goToHomePage(context),
                   child: const Text(
                     'Kontynuuj jako gość',
                     style: TextStyle(fontSize: 20),

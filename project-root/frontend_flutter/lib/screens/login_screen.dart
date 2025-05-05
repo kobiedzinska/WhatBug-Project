@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_flutter/screens/home_screen.dart';
 import 'package:frontend_flutter/utilities/my_app_bar.dart';
+import 'package:frontend_flutter/utilities/navigation.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -26,14 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     if (loginSuccessful) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return HomePage();
-          },
-        ),
-      );
+      goToHomePage(context);
     }
   }
 

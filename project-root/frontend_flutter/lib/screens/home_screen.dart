@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_flutter/screens/all_bugs_screen.dart';
-import 'package:frontend_flutter/screens/camera_screen.dart';
+import 'package:frontend_flutter/utilities/bottom_bar.dart';
 import 'package:frontend_flutter/utilities/my_app_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,20 +10,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  void openCameraScreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const CameraScreen()),
-    );
-  }
-
-  void goToBugsScreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const AllBugsScreen()),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,16 +42,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.home)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.bug_report)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
-          ],
-        ),
-      ),
+      bottomNavigationBar: MyBottomBar(),
     );
   }
 }

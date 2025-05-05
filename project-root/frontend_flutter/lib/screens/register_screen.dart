@@ -1,8 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:frontend_flutter/screens/login_screen.dart';
 import 'package:frontend_flutter/utilities/my_app_bar.dart';
+import 'package:frontend_flutter/utilities/navigation.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -41,14 +39,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         'Register successful, you can now log in :)',
       );
 
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return LoginScreen();
-          },
-        ),
-      );
+      goToLoginScreen(context);
     }
   }
 
