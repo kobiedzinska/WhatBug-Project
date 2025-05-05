@@ -35,18 +35,7 @@ public class AuthController {
     PasswordEncoder encoder;
     @Autowired
     JwtUtil jwtUtils;
-/*    @PostMapping("/signin")
-    public String authenticateUser(@RequestBody ClientDTO client) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        client.getUsername(),
-                        client.getPassword()
-                )
-        );
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-        return jwtUtils.generateToken(userDetails.getUsername());
-    }*/
 
 
     @PostMapping("/login")
@@ -74,7 +63,7 @@ public class AuthController {
     }
 
 
-    @PostMapping("/signup")
+    @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody ClientDTO client) {
         if (clientService.findClientByName(client.getUsername()) == null) {
             return new ResponseEntity<>("Error: Username is already taken!", HttpStatus.CONFLICT);

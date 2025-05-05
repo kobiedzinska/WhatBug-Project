@@ -17,12 +17,12 @@ public class BugFoundController {
 
 
     @PostMapping("/add/{client_id}")
-    ResponseEntity<?> addBug(@RequestBody BugFound bug, @RequestParam Long client_id) {
+    ResponseEntity<?> addBug(@RequestBody BugFound bug, @PathVariable Long client_id) {
         return new ResponseEntity<>(bug, HttpStatus.OK);
     }
 
     @GetMapping("/all/{client_id}")
-    ResponseEntity<?> getAllBugs(@RequestParam Long client_id) {
+    ResponseEntity<?> getAllBugs(@PathVariable Long client_id) {
         return new ResponseEntity<>(bugFoundService.getAllByClient_Id(client_id), HttpStatus.OK);
     }
 }
