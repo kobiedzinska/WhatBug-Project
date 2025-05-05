@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_flutter/utilities/bottom_bar.dart';
+import 'package:frontend_flutter/utilities/camera_button.dart';
 import 'package:frontend_flutter/utilities/my_app_bar.dart';
+import 'package:frontend_flutter/utilities/navigation.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -41,7 +43,8 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-
+      floatingActionButton: CameraButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       bottomNavigationBar: MyBottomBar(),
     );
   }
