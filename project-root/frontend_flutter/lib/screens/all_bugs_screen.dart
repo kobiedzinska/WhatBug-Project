@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_flutter/api/http_service.dart';
+import 'package:frontend_flutter/utilities/bug_card.dart';
 import 'package:frontend_flutter/utilities/my_app_bar.dart';
 
 class AllBugsScreen extends StatefulWidget {
@@ -37,9 +38,10 @@ class _AllBugsScreenState extends State<AllBugsScreen> {
               itemCount: bugs.length,
               itemBuilder: (context, index) {
                 final bug = bugs[index];
-                return ListTile(
-                  title: Text(bug.name),
-                  subtitle: Text("Phylum: ${bug.phylum}"),
+                return BugCard(
+                  bugName: bug.name,
+                  bugInfo: "Phylum: ${bug.phylum}",
+                  bugPicture: AssetImage('lib/images/appIcon.png'),
                 );
               },
             );
