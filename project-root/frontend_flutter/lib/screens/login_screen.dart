@@ -36,13 +36,13 @@ class _LoginScreenState extends State<LoginScreen> {
       builder: (context) {
         return AlertDialog(
           title: Text(title),
-          content: Text(message),
+          content: Text(message, style: TextStyle(fontWeight: FontWeight.bold)),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text("OK"),
+              child: Text("OK",),
             ),
           ],
         );

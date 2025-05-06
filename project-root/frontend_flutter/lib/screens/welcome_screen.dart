@@ -27,7 +27,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     children: [
                       const Text(
                         'welcome to our app',
-                        style: TextStyle(fontSize: 25),
+                        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                       ),
                       const Text(
                         '☆*: .｡. o(≧▽≦)o .｡.:*☆',
@@ -52,7 +52,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       onPressed: () => goToLoginScreen(context),
                       child: const Text(
                         'Zaloguj',
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -66,7 +66,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       onPressed: () => goToRegisterScreen(context),
                       child: const Text(
                         'Zarejestruj',
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -81,7 +81,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   onPressed: () => goToHomePage(context),
                   child: const Text(
                     'Kontynuuj jako gość',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

@@ -33,10 +33,10 @@ class _HomePageState extends State<HomePage> {
                 width: MediaQuery.of(context).size.width * 0.90,
                 child: Row(
                   children: [
-                    Icon(Icons.lightbulb_outline_rounded, size: 30),
+                    Icon(Icons.star_border_rounded, size: 35),
                     Text(
                       'Did you know... ?',
-                      style: GoogleFonts.comicNeue(
+                      style: GoogleFonts.atma(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
                       ),
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Text(
                             'Odorek zielony, jeśli zostanie wystraszony, wydziela mocny, nieprzyjemny zapach by odstraszyć potencjalne niebezpieczeństwo - stąd jego nazwa.',
-                            style: GoogleFonts.comicNeue(
+                            style: GoogleFonts.atma(
                               fontSize: 20,
                               fontWeight: FontWeight.normal,
                             ),
@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                 width: MediaQuery.of(context).size.width * 0.90,
                 child: Text(
                   'Recently found',
-                  style: GoogleFonts.comicNeue(
+                  style: GoogleFonts.atma(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),

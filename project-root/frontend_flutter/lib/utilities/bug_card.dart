@@ -38,7 +38,7 @@ class BugCard extends StatelessWidget {
                       children: [
                         Text(
                           bugName,
-                          style: GoogleFonts.comicNeue(
+                          style: GoogleFonts.atma(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
                           ),
@@ -46,7 +46,7 @@ class BugCard extends StatelessWidget {
                         SizedBox(
                           child: Text(
                             bugInfo,
-                            style: GoogleFonts.comicNeue(
+                            style: GoogleFonts.atma(
                               fontSize: 20,
                               fontWeight: FontWeight.normal,
                             ),

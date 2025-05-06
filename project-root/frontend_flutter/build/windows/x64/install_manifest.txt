@@ -6,6 +6,7 @@ C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_
 C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Debug/data/flutter_assets/FontManifest.json
 C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
 C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Debug/data/flutter_assets/kernel_blob.bin
+C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Debug/data/flutter_assets/lib/images/appIcon.png
 C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Debug/data/flutter_assets/NativeAssetsManifest.json
 C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Debug/data/flutter_assets/NOTICES.Z
 C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Debug/data/flutter_assets/shaders/ink_sparkle.frag

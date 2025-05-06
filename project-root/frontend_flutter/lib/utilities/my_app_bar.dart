@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget{
   const MyAppBar({super.key});
@@ -7,7 +8,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget{
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      title: const Text("Insektorium"),
+      title: Text("Insektorium", style: GoogleFonts.kablammo(fontSize: 30)),
       centerTitle: true,
       elevation: 5,
       shadowColor: Theme.of(context).colorScheme.outline,
@@ -15,5 +16,5 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget{
   }
   
   @override
-  Size get preferredSize => const Size.fromHeight(60);
+  Size get preferredSize => const Size.fromHeight(70);
 }
