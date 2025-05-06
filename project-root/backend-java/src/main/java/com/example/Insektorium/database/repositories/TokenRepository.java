@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Repository
 public interface TokenRepository extends JpaRepository<RefreshToken, Long> {
-    public RefreshToken findRefreshTokenByClient_Id(Long id);
-    public RefreshToken findRefreshTokenByClient_Email(String mail);
+    RefreshToken findRefreshTokenByClient_Id(Long id);
+    RefreshToken findRefreshTokenByClient_Email(String mail);
 }

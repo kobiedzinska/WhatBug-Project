@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface BugFoundRepository extends JpaRepository<BugFound, Long> {
-    List<BugFound> findAllByClient_Id(Long id);
+    List<BugFound> findAllByClient_IdOrderByName(Long id);
 }
