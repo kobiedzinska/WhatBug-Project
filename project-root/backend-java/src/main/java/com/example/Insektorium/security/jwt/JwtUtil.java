@@ -1,5 +1,6 @@
 package com.example.Insektorium.security.jwt;
 
+import com.example.Insektorium.database.entities.entities.Client;
 import io.jsonwebtoken.security.SecurityException;
 import org.springframework.stereotype.Component;
 import io.jsonwebtoken.*;
@@ -26,10 +27,11 @@ public class JwtUtil {
         this.key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
     }
 
-    public Pair generateToken(String username) {
+    public Pair generateToken(Client client) {
         Date now = new Date();
         String token = Jwts.builder()
-                .setSubject(username)
+                .setSubject(client.getUsername())
+                .claim("id", client.getId())
                 .setIssuedAt(now)
                 .setExpiration(new Date((now).getTime() + jwtExpirationMs))
                 .signWith(key, SignatureAlgorithm.HS256)
@@ -45,6 +47,14 @@ public class JwtUtil {
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();
+    }
+
+    public Long getIdFromToken(String token){
+        return Long.parseLong(Jwts.parserBuilder()
+                .setSigningKey(key).build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getId());
     }
 
     public boolean validateJwtToken(String token) {

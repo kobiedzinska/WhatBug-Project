@@ -18,4 +18,7 @@ public class TokenService {
     public RefreshToken findTokenByMail(String mail) {
         return tokenRepository.findRefreshTokenByClient_Email(mail);
     }
+    public RefreshToken findTokenById(Long id) {
+        return tokenRepository.findRefreshTokenByClient_Id(id);
+    }
 }

@@ -47,7 +47,7 @@ public class AuthController {
         Long id = clientService.floginUser(clientDTO.getEmail(), clientDTO.getPassword());
         if(id !=null) {
 
-            Pair pair = jwtUtils.generateToken(clientDTO.getEmail());
+            Pair pair = jwtUtils.generateToken(clientService.findClientById(id));
             String token = pair.getToken();
             Date date = pair.getNow();
             RefreshToken refreshToken = new RefreshToken();
@@ -79,18 +79,22 @@ public class AuthController {
     }
 
     @PostMapping("/refresh")
-    public ResponseEntity<?> refreshToken(@RequestBody ClientDTO client) {
-        RefreshToken token = tokenService.findTokenByMail(client.getEmail());
+    public ResponseEntity<?> refreshToken(@RequestBody String accessToken) {
+        Long id = jwtUtils.getIdFromToken(accessToken);
+        RefreshToken token = tokenService.findTokenById(id);
         if(token == null) return new ResponseEntity<>("No token to send", HttpStatus.FORBIDDEN);//też powinno przekierować na logowanie
-        if(token.getExpiresAt().before(new Date()))return new ResponseEntity<>(jwtUtils.generateToken(client.getEmail()).getToken(), HttpStatus.OK);
-        return new ResponseEntity<>("Token expired", HttpStatus.UNAUTHORIZED);//to powinno przekierować na ponowne logowanie wtedy
+        if (token.getExpiresAt().before(new Date())) {
+            return new ResponseEntity<>("Refresh token expired", HttpStatus.UNAUTHORIZED);
+        }
+
+        return ResponseEntity.ok(jwtUtils.generateToken(clientService.findClientById(id)).getToken());
 
     }
 
     @PostMapping("/test")
     public String test(@RequestBody Map<String, String> payload) {
         String username = payload.get("username");
-        String token = jwtUtils.generateToken(username).getToken();
+        String token = jwtUtils.generateToken(clientService.findClientByName(username)).getToken();
         System.out.println(token);
         return token;
     }
