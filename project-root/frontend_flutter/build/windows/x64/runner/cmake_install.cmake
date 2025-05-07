@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/frontend_flutter/windows/runner
+# Install script for directory: C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/windows/runner
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

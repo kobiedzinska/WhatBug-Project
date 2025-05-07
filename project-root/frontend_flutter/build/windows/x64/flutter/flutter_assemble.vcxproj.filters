@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\build\windows\x64\CMakeFiles\4f93c059e28c83cb5769aba95fa4460e\flutter_windows.dll.rule">
+    <CustomBuild Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\build\windows\x64\CMakeFiles\fcbc02c255260119b9f4190cc502f2c4\flutter_windows.dll.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\build\windows\x64\CMakeFiles\474db659833d82cb6794766b9acaef43\flutter_assemble.rule">
+    <CustomBuild Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\build\windows\x64\CMakeFiles\4fd8b119df3927b956a4a7569937ad77\flutter_assemble.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\windows\flutter\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\windows\flutter\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\build\windows\x64\flutter\CMakeFiles\flutter_assemble" />
+    <None Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\build\windows\x64\flutter\CMakeFiles\flutter_assemble" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{1A8B2375-010A-3B74-BF63-573642BA12F5}</UniqueIdentifier>
+      <UniqueIdentifier>{62E52C01-9F4A-39A9-8FAE-081C3D929B98}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
