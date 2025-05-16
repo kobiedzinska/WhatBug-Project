@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\windows\flutter\ephemeral\cpp_client_wrapper\core_implementations.cc">
+    <ClCompile Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\windows\flutter\ephemeral\cpp_client_wrapper\core_implementations.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\windows\flutter\ephemeral\cpp_client_wrapper\standard_codec.cc">
+    <ClCompile Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\windows\flutter\ephemeral\cpp_client_wrapper\standard_codec.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\windows\flutter\ephemeral\cpp_client_wrapper\flutter_engine.cc">
+    <ClCompile Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\windows\flutter\ephemeral\cpp_client_wrapper\flutter_engine.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\windows\flutter\ephemeral\cpp_client_wrapper\flutter_view_controller.cc">
+    <ClCompile Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\windows\flutter\ephemeral\cpp_client_wrapper\flutter_view_controller.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\frontend_flutter\windows\flutter\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\windows\flutter\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{1A8B2375-010A-3B74-BF63-573642BA12F5}</UniqueIdentifier>
+      <UniqueIdentifier>{62E52C01-9F4A-39A9-8FAE-081C3D929B98}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{BCABFB2D-DDCA-3A1E-A4D1-73292F2413DF}</UniqueIdentifier>
+      <UniqueIdentifier>{F6670817-44D9-3B00-A969-52050E30630F}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

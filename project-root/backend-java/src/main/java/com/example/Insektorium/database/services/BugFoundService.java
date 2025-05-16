@@ -18,6 +18,6 @@ public class BugFoundService {
     }
 
     public List<BugFound> getAllByClient_Id(Long id){
-        return bugFoundRepository.findAllByClient_Id(id);
+        return bugFoundRepository.findAllByClient_IdOrderByName(id);
     }
 }

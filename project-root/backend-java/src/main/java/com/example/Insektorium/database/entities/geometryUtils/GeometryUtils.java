@@ -21,4 +21,5 @@ public class GeometryUtils {
     public static double getLongitude(Point point) {
         return point.getX();
     }
+
 }

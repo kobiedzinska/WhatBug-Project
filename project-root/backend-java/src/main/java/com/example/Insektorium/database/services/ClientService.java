@@ -20,8 +20,16 @@ public class ClientService {
     public String loginUser(String username, String password){
         return clientRepository.loginUser(username, password);
     }
-
+    public Long floginUser(String username, String password){
+        return clientRepository.floginUser(username, password);
+    }
+    public Client addClient(Client client){
+        return clientRepository.save(client);
+    }
+    public Client findClientById(Long id){
+        return clientRepository.findById(id).orElse(null);
+    }
     public Client findClientByName(String name){
-        return clientRepository.findClientByName(name);
+        return clientRepository.findClientByUsername(name);
     }
 }
