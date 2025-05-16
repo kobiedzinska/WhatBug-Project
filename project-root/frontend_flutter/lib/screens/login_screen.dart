@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_flutter/api/http_service.dart';
 import 'package:frontend_flutter/utilities/my_app_bar.dart';
 import 'package:frontend_flutter/utilities/navigation.dart';
 
@@ -13,20 +14,21 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  void attemptLogin() {
+  Future<void> attemptLogin() async {
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
 
-    bool loginSuccessful = true;
-    // TODO implement login check
+    bool loginSuccessful = await loginUser(email, password);
 
     if (email.isEmpty || password.isEmpty) {
-      _showErrorDialog("Error", "Please enter both email and password.");
+      _showErrorDialog("Błąd", "Pola nie mogą być puste");
       return;
     }
 
     if (loginSuccessful) {
       goToHomePage(context);
+    } else {
+      _showErrorDialog("Błąd", "Login lub hasło są nieprawidłowe");
     }
   }
 
@@ -42,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text("OK",),
+              child: Text("OK"),
             ),
           ],
         );
