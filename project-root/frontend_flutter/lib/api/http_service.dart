@@ -18,7 +18,7 @@ class Bug {
 }
 
 class BugService {
-  final String baseURL = "http://localhost:8080/api/bugs/all";
+  final String baseURL = "http://localhost:8080/api/bugs_found/all/1";
 
   Future<List<Bug>> getBugs() async {
     final response = await http.get(Uri.parse(baseURL));

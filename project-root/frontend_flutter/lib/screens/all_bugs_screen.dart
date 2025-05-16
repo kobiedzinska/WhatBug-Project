@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_flutter/api/http_service.dart';
+import 'package:frontend_flutter/utilities/bottom_bar.dart';
 import 'package:frontend_flutter/utilities/bug_card.dart';
 import 'package:frontend_flutter/utilities/my_app_bar.dart';
 
@@ -29,9 +30,9 @@ class _AllBugsScreenState extends State<AllBugsScreen> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
+            return Center(child: Text('Błąd: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No bugs found.'));
+            return const Center(child: Text('Nie masz jeszcze znalezionych robaków', style: TextStyle(fontSize: 18),));
           } else {
             final bugs = snapshot.data!;
             return ListView.builder(
@@ -48,6 +49,7 @@ class _AllBugsScreenState extends State<AllBugsScreen> {
           }
         },
       ),
+      bottomNavigationBar: MyBottomBar(),
     );
   }
 }
