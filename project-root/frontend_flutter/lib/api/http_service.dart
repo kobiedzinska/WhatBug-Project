@@ -50,10 +50,42 @@ Future<bool> loginUser(String email, String password) async {
     );
 
     if (response.statusCode == 200) {
-      
       final token = response.body;
       await _storage.write(key: 'jwt_token', value: token);
 
+      return true;
+    } else {
+      if (kDebugMode) {
+        print('Błąd logowania: ${response.statusCode}');
+      }
+    }
+  } catch (e) {
+    if (kDebugMode) {
+      print('Exception while logging in: $e');
+    }
+  }
+  return false;
+}
+
+Future<bool> registerUser(
+  String username,
+  String email,
+  String password,
+) async {
+  const String apiUrl = 'http://localhost:8080/api/auth/register';
+
+  try {
+    final response = await http.post(
+      Uri.parse(apiUrl),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'username': username,
+        'email': email,
+        'password': password,
+      }),
+    );
+
+    if (response.statusCode == 201) {
       return true;
     } else {
       if (kDebugMode) {

@@ -1,5 +1,6 @@
 C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Debug/data/icudtl.dat
 C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Debug/flutter_windows.dll
+C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Debug/flutter_secure_storage_windows_plugin.dll
 C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Debug/gal_plugin.dll
 C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Debug/data/flutter_assets/AssetManifest.bin
 C:/Users/zuzuz/VSCodeProjects/insektorium/WhatBug-Project/project-root/frontend_flutter/build/windows/x64/runner/Debug/data/flutter_assets/AssetManifest.json

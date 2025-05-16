@@ -30,7 +30,18 @@ project-root/backend-java/target/classes/env.properties
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
-/build/
+**/build/
+
+# iOS
+ios/Flutter/Generated.xcconfig
+ios/Runner.xcworkspace/
+# Android
+android/.gradle/
+android/app/build/
+# Windows, Linux, macOS
+linux/
+windows/
+macos/
 
 # Symbolication related
 app.*.symbols

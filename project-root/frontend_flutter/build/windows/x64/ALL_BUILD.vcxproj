@@ -140,6 +140,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
+    <ProjectReference Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\build\windows\x64\plugins\flutter_secure_storage_windows\flutter_secure_storage_windows_plugin.vcxproj">
+      <Project>{65E9C841-27D6-3BD1-8098-09E8D5B805E5}</Project>
+      <Name>flutter_secure_storage_windows_plugin</Name>
+    </ProjectReference>
     <ProjectReference Include="C:\Users\zuzuz\VSCodeProjects\insektorium\WhatBug-Project\project-root\frontend_flutter\build\windows\x64\flutter\flutter_wrapper_app.vcxproj">
       <Project>{738DCA57-B4DC-3AA4-979E-FA806ACB603A}</Project>
       <Name>flutter_wrapper_app</Name>
