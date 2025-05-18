@@ -8,3 +8,7 @@
 /dataSources.local.xml
 ../project-root/backend-java/src/main/resources/env.properties
 ../project-root/backend-java/target/classes/env.properties
+../project-root/backend-java/src/main/resources/application-h2.properties
+../project-root/backend-java/target/classes/application-h2.properties
+../project-root/backend-java/src/main/resources/application-sql.properties
+../project-root/backend-java/target/classes/application-sql.properties

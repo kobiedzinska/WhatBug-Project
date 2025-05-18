@@ -17,6 +17,11 @@ migrate_working_dir/
 .idea/
 project-root/backend-java/src/main/resources/env.properties
 project-root/backend-java/target/classes/env.properties
+
+project-root/backend-java/src/main/resources/application-h2.properties
+project-root/backend-java/target/classes/application-h2.properties
+project-root/backend-java/src/main/resources/application-sql.properties
+project-root/backend-java/target/classes/application-sql.properties
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
 # is commented out by default.

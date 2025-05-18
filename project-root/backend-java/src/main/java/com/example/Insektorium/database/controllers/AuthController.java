@@ -11,15 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -39,12 +35,13 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody ClientDTO clientDTO){
-        System.out.println(clientDTO);
-        if(clientDTO.getEmail() == null || clientDTO.getPassword() == null) {
+    public ResponseEntity<?> login(@RequestBody ClientAuth clientAuth){
+
+        System.out.println(clientAuth);
+        if(clientAuth.mail == null || clientAuth.password == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Long id = clientService.floginUser(clientDTO.getEmail(), clientDTO.getPassword());
+        Long id = clientService.floginUser(clientAuth.mail, clientAuth.password);
         if(id !=null) {
 
             Pair pair = jwtUtils.generateToken(clientService.findClientById(id));
@@ -64,17 +61,17 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody ClientDTO client) {
-        if (clientService.findClientByName(client.getUsername()) == null) {
+    public ResponseEntity<?> registerUser(@RequestBody ClientDTO clientDTO) {
+        if (clientService.findClientByName(clientDTO.getUsername()) == null) {
             return new ResponseEntity<>("Error: Username is already taken!", HttpStatus.CONFLICT);
         }
         // Create new user's account
         Client newClient = new Client();
-        newClient.setUsername(client.getUsername());
-        newClient.setEmail(client.getEmail());
-        newClient.setPassword(encoder.encode(client.getPassword()));
-        clientService.addClient(newClient);
-
+        newClient.setUsername(clientDTO.getUsername());
+        newClient.setEmail(clientDTO.getEmail());
+        newClient.setPassword(encoder.encode(clientDTO.getPassword()));
+        newClient = clientService.addClient(newClient);
+        System.out.println(newClient);
         return new ResponseEntity<>("User registered successfully!", HttpStatus.CREATED);
     }
 
@@ -99,4 +96,6 @@ public class AuthController {
         return token;
     }
 
+    public record ClientAuth(String mail, String password){
+    }
 }
