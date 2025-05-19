@@ -42,10 +42,10 @@ public class AuthController {
     public ResponseEntity<?> login(@RequestBody LoginRequest request){
 
         System.out.println(request);
-        if(request.getMail() == null || request.getPassword() == null) {
+        if(request.getEmail() == null || request.getPassword() == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Long id = clientService.floginUser(request.getMail(), request.getPassword());
+        Long id = clientService.floginUser(request.getEmail(), request.getPassword());
         if(id !=null) {
             Client client = clientService.findClientById(id);
             String accessToken = jwtUtils.generateToken(client);
@@ -53,7 +53,8 @@ public class AuthController {
             RefreshToken refreshToken = tokenService.createToken(client);
 
             System.out.println(accessToken);
-            return new ResponseEntity<>(new JwtResponse(accessToken, refreshToken.getToken(), client.getId(), client.getUsername(), client.getEmail()), HttpStatus.OK);
+            return new ResponseEntity<>(new JwtResponse(accessToken, refreshToken.getToken(), client.getId(),
+                    client.getUsername(), client.getEmail()), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
