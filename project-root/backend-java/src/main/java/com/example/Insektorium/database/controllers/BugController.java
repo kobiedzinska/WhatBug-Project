@@ -1,6 +1,6 @@
 package com.example.Insektorium.database.controllers;
 
-import com.example.Insektorium.database.entities.entities.Bug;
+import com.example.Insektorium.database.entities.tables.Bug;
 import com.example.Insektorium.database.services.BugService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

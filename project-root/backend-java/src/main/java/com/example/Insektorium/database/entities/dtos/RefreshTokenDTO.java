@@ -1,7 +1,5 @@
 package com.example.Insektorium.database.entities.dtos;
 
-import com.example.Insektorium.database.entities.entities.Client;
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

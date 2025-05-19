@@ -1,5 +1,6 @@
-package com.example.Insektorium.database.entities.entities;
+package com.example.Insektorium.database.entities.tables;
 
+import com.example.Insektorium.database.entities.entities.LoginAttempt;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;

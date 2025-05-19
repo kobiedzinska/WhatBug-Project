@@ -1,5 +1,6 @@
 package com.example.Insektorium.database.entities.entities;
 
+import com.example.Insektorium.database.entities.tables.Client;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;

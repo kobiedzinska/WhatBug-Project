@@ -1,6 +1,6 @@
 package com.example.Insektorium.database.services;
 
-import com.example.Insektorium.database.entities.entities.Client;
+import com.example.Insektorium.database.entities.tables.Client;
 import com.example.Insektorium.database.repositories.ClientRepository;
 
 import org.springframework.stereotype.Service;

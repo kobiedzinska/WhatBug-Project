@@ -1,6 +1,6 @@
 package com.example.Insektorium.security.jwt;
 
-import com.example.Insektorium.database.entities.entities.Client;
+import com.example.Insektorium.database.entities.tables.Client;
 
 import com.example.Insektorium.database.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;

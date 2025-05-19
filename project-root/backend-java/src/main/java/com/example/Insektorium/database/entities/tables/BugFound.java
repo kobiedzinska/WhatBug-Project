@@ -1,4 +1,4 @@
-package com.example.Insektorium.database.entities.entities;
+package com.example.Insektorium.database.entities.tables;
 
 import jakarta.persistence.*;
 import lombok.Data;

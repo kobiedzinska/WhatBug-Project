@@ -1,12 +1,15 @@
 package com.example.Insektorium.database.controllers;
 
 import com.example.Insektorium.database.entities.dtos.ClientDTO;
-import com.example.Insektorium.database.entities.entities.Client;
-import com.example.Insektorium.database.entities.entities.RefreshToken;
+import com.example.Insektorium.database.entities.dtos.LoginRequest;
+import com.example.Insektorium.database.entities.dtos.RefreshRequest;
+import com.example.Insektorium.database.entities.dtos.RegisterRequest;
+import com.example.Insektorium.database.entities.entities.JwtResponse;
+import com.example.Insektorium.database.entities.tables.Client;
+import com.example.Insektorium.database.entities.tables.RefreshToken;
 import com.example.Insektorium.database.services.ClientService;
 import com.example.Insektorium.database.services.TokenService;
 import com.example.Insektorium.security.jwt.JwtUtil;
-import com.example.Insektorium.security.jwt.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +18,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.Map;
 
@@ -35,67 +39,67 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody ClientAuth clientAuth){
+    public ResponseEntity<?> login(@RequestBody LoginRequest request){
 
-        System.out.println(clientAuth);
-        if(clientAuth.mail == null || clientAuth.password == null) {
+        System.out.println(request);
+        if(request.getMail() == null || request.getPassword() == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Long id = clientService.floginUser(clientAuth.mail, clientAuth.password);
+        Long id = clientService.floginUser(request.getMail(), request.getPassword());
         if(id !=null) {
+            Client client = clientService.findClientById(id);
+            String accessToken = jwtUtils.generateToken(client);
 
-            Pair pair = jwtUtils.generateToken(clientService.findClientById(id));
-            String token = pair.getToken();
-            Date date = pair.getNow();
-            RefreshToken refreshToken = new RefreshToken();
-            refreshToken.setClient(clientService.findClientById(id));
-            refreshToken.setCreatedAt(date);
-            refreshToken.setExpiresAt(new Date((date).getTime()+604800000));//7 days
-            tokenService.saveToken(refreshToken);
+            RefreshToken refreshToken = tokenService.createToken(client);
 
-            System.out.println(token);
-            return new ResponseEntity<>(token, HttpStatus.OK);
+            System.out.println(accessToken);
+            return new ResponseEntity<>(new JwtResponse(accessToken, refreshToken.getToken(), client.getId(), client.getUsername(), client.getEmail()), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody ClientDTO clientDTO) {
-        if (clientService.findClientByName(clientDTO.getUsername()) == null) {
+    public ResponseEntity<?> registerUser(@RequestBody RegisterRequest request) {
+        if (clientService.findClientByName(request.getUsername()) != null) {
             return new ResponseEntity<>("Error: Username is already taken!", HttpStatus.CONFLICT);
         }
-        // Create new user's account
+
         Client newClient = new Client();
-        newClient.setUsername(clientDTO.getUsername());
-        newClient.setEmail(clientDTO.getEmail());
-        newClient.setPassword(encoder.encode(clientDTO.getPassword()));
+        newClient.setUsername(request.getUsername());
+        newClient.setEmail(request.getEmail());
+        newClient.setPassword(encoder.encode(request.getPassword()));
         newClient = clientService.addClient(newClient);
         System.out.println(newClient);
-        return new ResponseEntity<>("User registered successfully!", HttpStatus.CREATED);
+
+        String accessToken = jwtUtils.generateToken(newClient);
+
+        RefreshToken refreshToken = tokenService.createToken(newClient);
+        return new ResponseEntity<>(new JwtResponse(accessToken, refreshToken.getToken(), newClient.getId(), newClient.getUsername(), newClient.getEmail()), HttpStatus.CREATED);
     }
 
     @PostMapping("/refresh")
-    public ResponseEntity<?> refreshToken(@RequestBody String accessToken) {
-        Long id = jwtUtils.getIdFromToken(accessToken);
-        RefreshToken token = tokenService.findTokenById(id);
+    public ResponseEntity<?> refreshToken(@RequestBody RefreshRequest request) {
+        String refreshTokenValue = request.getRefreshToken();
+        RefreshToken token = tokenService.findTokenByTokenValue(refreshTokenValue);
         if(token == null) return new ResponseEntity<>("No token to send", HttpStatus.FORBIDDEN);//też powinno przekierować na logowanie
-        if (token.getExpiresAt().before(new Date())) {
+        if (token.getExpiresAt().isBefore(Instant.now())) {
             return new ResponseEntity<>("Refresh token expired", HttpStatus.UNAUTHORIZED);
         }
+        Client client = token.getClient();
+        String newAccessToken = jwtUtils.generateToken(client);
 
-        return ResponseEntity.ok(jwtUtils.generateToken(clientService.findClientById(id)).getToken());
+        return new ResponseEntity<>(new JwtResponse(newAccessToken, token.getToken(), client.getId(), client.getUsername(), client.getEmail()), HttpStatus.OK);
 
     }
 
-    @PostMapping("/test")
+/*    @PostMapping("/test")
     public String test(@RequestBody Map<String, String> payload) {
         String username = payload.get("username");
         String token = jwtUtils.generateToken(clientService.findClientByName(username)).getToken();
         System.out.println(token);
         return token;
-    }
+    }*/
 
-    public record ClientAuth(String mail, String password){
-    }
+
 }

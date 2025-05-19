@@ -1,6 +1,6 @@
 package com.example.Insektorium.database.repositories;
 
-import com.example.Insektorium.database.entities.entities.Client;
+import com.example.Insektorium.database.entities.tables.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
