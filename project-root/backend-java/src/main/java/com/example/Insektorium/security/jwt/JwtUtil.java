@@ -1,17 +1,16 @@
 package com.example.Insektorium.security.jwt;
 
-import com.example.Insektorium.database.entities.entities.Client;
+import com.example.Insektorium.database.entities.tables.Client;
 import io.jsonwebtoken.security.SecurityException;
 import org.springframework.stereotype.Component;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.*;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
-import java.util.Map;
 
 @Component
 public class JwtUtil {
@@ -27,16 +26,15 @@ public class JwtUtil {
         this.key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
     }
 
-    public Pair generateToken(Client client) {
+    public String generateToken(Client client) {
         Date now = new Date();
-        String token = Jwts.builder()
+        return Jwts.builder()
                 .setSubject(client.getUsername())
-                .claim("id", client.getId())
+                .claim("client_id", client.getId())
                 .setIssuedAt(now)
                 .setExpiration(new Date((now).getTime() + jwtExpirationMs))
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
-        return new Pair(token, now);
     }
 
 

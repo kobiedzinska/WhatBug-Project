@@ -33,6 +33,17 @@ migrate_working_dir/
 .pub/
 /build/
 
+# iOS
+ios/Flutter/Generated.xcconfig
+ios/Runner.xcworkspace/
+# Android
+android/.gradle/
+android/app/build/
+# Windows, Linux, macOS
+linux/
+windows/
+macos/
+
 # Symbolication related
 app.*.symbols
 
