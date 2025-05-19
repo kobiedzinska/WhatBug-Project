@@ -59,7 +59,7 @@ public class AuthController {
     }
 
 
-    @PostMapping("/register")
+/*    @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegisterRequest request) {
         if (clientService.findClientByName(request.getUsername()) != null) {
             return new ResponseEntity<>("Error: Username is already taken!", HttpStatus.CONFLICT);
@@ -75,7 +75,23 @@ public class AuthController {
         String accessToken = jwtUtils.generateToken(newClient);
 
         RefreshToken refreshToken = tokenService.createToken(newClient);
-        return new ResponseEntity<>(new JwtResponse(accessToken, refreshToken.getToken(), newClient.getId(), newClient.getUsername(), newClient.getEmail()), HttpStatus.CREATED);
+        return new ResponseEntity<>(new JwtResponse(accessToken, refreshToken.getToken(), newClient.getId(),
+                newClient.getUsername(), newClient.getEmail()), HttpStatus.CREATED);
+    }*/
+
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@RequestBody RegisterRequest request) {
+        Long id = clientService.fRegisterUser(request.getUsername(), request.getEmail(), request.getPassword());
+        if(id==0){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        Client client = clientService.findClientById(id);
+        RefreshToken refreshToken = tokenService.createToken(client);
+        String accessToken = jwtUtils.generateToken(client);
+        return new ResponseEntity<>(new JwtResponse(accessToken, refreshToken.getToken(), client.getId(),
+                client.getUsername(), client.getEmail()), HttpStatus.CREATED);
+
+
     }
 
     @PostMapping("/refresh")
