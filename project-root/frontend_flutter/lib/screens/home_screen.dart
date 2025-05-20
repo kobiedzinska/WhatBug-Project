@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_flutter/api/http_service.dart';
 import 'package:frontend_flutter/utilities/bottom_bar.dart';
 import 'package:frontend_flutter/utilities/bug_card.dart';
 import 'package:frontend_flutter/utilities/camera_button.dart';
@@ -13,7 +14,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // TODO get data of recently found bugs
+  Future<List<Bug>>? futureBugs;
+
+  @override
+  void initState() {
+    super.initState();
+    futureBugs = BugService().getBugs();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,20 +90,39 @@ class _HomePageState extends State<HomePage> {
                   textAlign: TextAlign.left,
                 ),
               ),
-              BugCard(
-                bugName: 'La kukaracza',
-                bugInfo: 'nie ma tak że dobrze albo że niedobrze',
-                bugPicture: AssetImage('lib/images/appIcon.png'),
-              ),
-              BugCard(
-                bugName: 'Jelonek rogacz',
-                bugInfo: 'jest całkiem średnio',
-                bugPicture: AssetImage('lib/images/appIcon.png'),
-              ),
-              BugCard(
-                bugName: 'Cymbałek jakiś',
-                bugInfo: 'bążur',
-                bugPicture: AssetImage('lib/images/appIcon.png'),
+              FutureBuilder(
+                future: futureBugs,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('Błąd: ${snapshot.error}'));
+                  } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return const Center(
+                      child: Text(
+                        'Nie masz jeszcze znalezionych robaków',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    );
+                  } else {
+                    final allBugs = snapshot.data!;
+                    final bugs =
+                        allBugs.length > 3 ? allBugs.sublist(0, 3) : allBugs;
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: bugs.length,
+                      itemBuilder: (context, index) {
+                        final bug = bugs[index];
+                        return BugCard(
+                          bugName: bug.name,
+                          bugInfo: "Phylum: ${bug.phylum}",
+                          bugPicture: AssetImage('lib/images/appIcon.png'),
+                        );
+                      },
+                    );
+                  }
+                },
               ),
               SizedBox(height: 110),
             ],

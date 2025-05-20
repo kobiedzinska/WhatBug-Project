@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     if (loginSuccessful) {
-      goToHomePage(context);
+      goToHomePage(context, true);
     } else {
       _showErrorDialog("Błąd", "Login lub hasło są nieprawidłowe");
     }

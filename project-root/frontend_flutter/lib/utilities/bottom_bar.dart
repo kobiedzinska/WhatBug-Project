@@ -15,7 +15,7 @@ class MyBottomBar extends StatelessWidget implements PreferredSizeWidget {
           Expanded(
             child: IconButton(
               onPressed: () {
-                goToHomePage(context);
+                goToHomePage(context, false);
               },
               icon: const Icon(Icons.home, size: 30.0),
             ),
@@ -25,7 +25,7 @@ class MyBottomBar extends StatelessWidget implements PreferredSizeWidget {
               onPressed: () {
                 goToBugsScreen(context);
               },
-              icon: const Icon(Icons.bug_report, size: 30.0),
+              icon: const Icon(Icons.pest_control, size: 30.0),
             ),
           ),
           Expanded(

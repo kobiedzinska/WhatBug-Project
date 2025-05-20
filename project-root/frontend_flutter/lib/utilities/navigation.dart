@@ -20,29 +20,36 @@ void goToRegisterScreen(BuildContext context) {
   );
 }
 
-void goToHomePage(BuildContext context) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const HomePage()),
-  );
+void goToHomePage(BuildContext context, bool replace) {
+  if (replace) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const HomePage()),
+    );
+  } else {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const HomePage()),
+    );
+  }
 }
 
 void openCameraScreen(BuildContext context) {
-  Navigator.push(
+  Navigator.pushReplacement(
     context,
     MaterialPageRoute(builder: (context) => const CameraScreen()),
   );
 }
 
 void goToBugsScreen(BuildContext context) {
-  Navigator.push(
+  Navigator.pushReplacement(
     context,
     MaterialPageRoute(builder: (context) => const AllBugsScreen()),
   );
 }
 
 void goToSettingsScreen(BuildContext context) {
-  Navigator.push(
+  Navigator.pushReplacement(
     context,
     MaterialPageRoute(builder: (context) => const SettingsScreen()),
   );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend_flutter/api/http_service.dart';
 import 'package:frontend_flutter/utilities/bottom_bar.dart';
 import 'package:frontend_flutter/utilities/bug_card.dart';
+import 'package:frontend_flutter/utilities/camera_button.dart';
 import 'package:frontend_flutter/utilities/my_app_bar.dart';
 
 class AllBugsScreen extends StatefulWidget {
@@ -49,6 +50,8 @@ class _AllBugsScreenState extends State<AllBugsScreen> {
           }
         },
       ),
+      floatingActionButton: CameraButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       bottomNavigationBar: MyBottomBar(),
     );
   }

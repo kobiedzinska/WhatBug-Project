@@ -78,7 +78,7 @@ class _WelcomePageState extends State<WelcomePage> {
               child: SizedBox(
                 height: MediaQuery.of(context).size.height * 0.06,
                 child: ElevatedButton(
-                  onPressed: () => goToHomePage(context),
+                  onPressed: () => goToHomePage(context, false),
                   child: const Text(
                     'Kontynuuj jako gość',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
