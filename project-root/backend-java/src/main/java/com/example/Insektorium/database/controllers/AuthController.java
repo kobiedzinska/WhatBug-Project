@@ -45,7 +45,7 @@ public class AuthController {
         if(request.getEmail() == null || request.getPassword() == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Long id = clientService.floginUser(request.getEmail(), request.getPassword());
+        Long id = clientService.floginUser(request.getEmail(), encoder.encode(request.getPassword()));
         if(id !=null) {
             Client client = clientService.findClientById(id);
             String accessToken = jwtUtils.generateToken(client);
@@ -82,15 +82,16 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegisterRequest request) {
-        Long id = clientService.fRegisterUser(request.getUsername(), request.getEmail(), request.getPassword());
+        Long id = clientService.fRegisterUser(request.getUsername(), request.getEmail(), encoder.encode(request.getPassword()));
         if(id==0){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
-        Client client = clientService.findClientById(id);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+/*        Client client = clientService.findClientById(id);
         RefreshToken refreshToken = tokenService.createToken(client);
         String accessToken = jwtUtils.generateToken(client);
         return new ResponseEntity<>(new JwtResponse(accessToken, refreshToken.getToken(), client.getId(),
-                client.getUsername(), client.getEmail()), HttpStatus.CREATED);
+                client.getUsername(), client.getEmail()), HttpStatus.CREATED);*/
 
 
     }

@@ -1,6 +1,10 @@
 package com.example.Insektorium.database.entities.entities;
 
+import lombok.Data;
+import lombok.Getter;
+
 import java.util.List;
+@Data
 
 public class JwtResponse {
     private String token;
