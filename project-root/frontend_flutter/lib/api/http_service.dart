@@ -18,9 +18,19 @@ class Bug {
 }
 
 class BugService {
-  final String baseURL = "http://localhost:8080/api/bugs_found/all/1";
-
   Future<List<Bug>> getBugs() async {
+
+
+    final userId = await _storage.read(key: 'userId');
+    final userEmail = await _storage.read(key: 'userEmail');
+
+    if (kDebugMode) {
+      print("userId from storage: $userId");
+      print("userEmail from storage: $userEmail");
+    }
+
+    final String baseURL = "http://localhost:8080/api/bugs_found/all/$userId";
+
     final response = await http.get(Uri.parse(baseURL));
 
     if (response.statusCode == 200) {
@@ -45,13 +55,27 @@ Future<bool> loginUser(String email, String password) async {
   try {
     final response = await http.post(
       Uri.parse(apiUrl),
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
       body: jsonEncode({'email': email, 'password': password}),
     );
 
     if (response.statusCode == 200) {
-      final token = response.body;
+      final responseBody = jsonDecode(response.body);
+      final token = responseBody['accessToken'];
+      final refreshToken = responseBody['refreshTokenUUID'];
+      final userId = responseBody['id'];
+      final username = responseBody['username'];
+      final userEmail = responseBody['email'];
+
       await _storage.write(key: 'jwt_token', value: token);
+      await _storage.write(key: 'accessToken', value: token);
+      await _storage.write(key: 'refreshTokenUUID', value: refreshToken);
+      await _storage.write(key: 'userId', value: userId.toString());
+      await _storage.write(key: 'username', value: username);
+      await _storage.write(key: 'userEmail', value: userEmail);
 
       return true;
     } else {
