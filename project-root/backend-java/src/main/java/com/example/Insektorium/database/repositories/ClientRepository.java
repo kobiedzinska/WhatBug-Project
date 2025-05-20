@@ -19,4 +19,5 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     Long fregisterUser(@Param("username") String username, @Param("email") String email, @Param("password") String password);
 
     Client findClientByUsername(String name);
+    Client findClientByEmail(String email);
 }

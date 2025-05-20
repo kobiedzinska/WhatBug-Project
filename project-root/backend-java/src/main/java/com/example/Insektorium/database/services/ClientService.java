@@ -35,4 +35,7 @@ public class ClientService {
     public Client findClientByName(String name){
         return clientRepository.findClientByUsername(name);
     }
+    public Client findClientByEmail(String email){
+        return clientRepository.findClientByEmail(email);
+    }
 }

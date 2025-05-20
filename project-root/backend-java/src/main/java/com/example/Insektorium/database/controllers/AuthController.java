@@ -45,7 +45,7 @@ public class AuthController {
         if(request.getEmail() == null || request.getPassword() == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Long id = clientService.floginUser(request.getEmail(), encoder.encode(request.getPassword()));
+/*        Long id = clientService.floginUser(request.getEmail(), encoder.encode(request.getPassword()));
         if(id !=null) {
             Client client = clientService.findClientById(id);
             String accessToken = jwtUtils.generateToken(client);
@@ -56,7 +56,23 @@ public class AuthController {
             return new ResponseEntity<>(new JwtResponse(accessToken, refreshToken.getToken(), client.getId(),
                     client.getUsername(), client.getEmail()), HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);*/
+
+
+        Client client = clientService.findClientByEmail(request.getEmail());
+        if(client==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        if(!encoder.matches(request.getPassword(), client.getPassword())) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        String accessToken = jwtUtils.generateToken(client);
+        RefreshToken refreshToken = tokenService.createToken(client);
+
+        System.out.println(accessToken);
+        return new ResponseEntity<>(new JwtResponse(accessToken, refreshToken.getToken(), client.getId(),
+                client.getUsername(), client.getEmail()), HttpStatus.OK);
     }
 
 
@@ -82,10 +98,24 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegisterRequest request) {
-        Long id = clientService.fRegisterUser(request.getUsername(), request.getEmail(), encoder.encode(request.getPassword()));
+        Client client  = clientService.findClientByName(request.getUsername());
+
+        /*Long id = clientService.fRegisterUser(request.getUsername(), request.getEmail(), encoder.encode(request.getPassword()));
         if(id==0){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }*/
+
+        if(client!=null){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
+
+        Client newClient = new Client();
+        newClient.setUsername(request.getUsername());
+        newClient.setEmail(request.getEmail());
+        newClient.setPassword(encoder.encode(request.getPassword()));
+        clientService.addClient(newClient);
+
+
         return new ResponseEntity<>(HttpStatus.CREATED);
 /*        Client client = clientService.findClientById(id);
         RefreshToken refreshToken = tokenService.createToken(client);
