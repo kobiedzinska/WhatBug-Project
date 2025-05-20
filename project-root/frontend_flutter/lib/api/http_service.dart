@@ -5,6 +5,13 @@ import 'package:http/http.dart' as http;
 
 final _storage = FlutterSecureStorage();
 
+class UserSession {
+  static Future<String?> getUserId() => _storage.read(key: 'userId');
+  static Future<String?> getUsername() => _storage.read(key: 'username');
+  static Future<String?> getUserEmail() => _storage.read(key: 'userEmail');
+  static Future<void> clearSession() => _storage.deleteAll();
+}
+
 class Bug {
   final int id;
   final String name;
@@ -19,8 +26,6 @@ class Bug {
 
 class BugService {
   Future<List<Bug>> getBugs() async {
-
-
     final userId = await _storage.read(key: 'userId');
     final userEmail = await _storage.read(key: 'userEmail');
 
@@ -74,8 +79,8 @@ Future<bool> loginUser(String email, String password) async {
       await _storage.write(key: 'accessToken', value: token);
       await _storage.write(key: 'refreshTokenUUID', value: refreshToken);
       await _storage.write(key: 'userId', value: userId.toString());
-      await _storage.write(key: 'username', value: username);
-      await _storage.write(key: 'userEmail', value: userEmail);
+      await _storage.write(key: 'username', value: username.toString());
+      await _storage.write(key: 'userEmail', value: userEmail.toString());
 
       return true;
     } else {
