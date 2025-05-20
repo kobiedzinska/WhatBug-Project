@@ -15,7 +15,7 @@ class MyBottomBar extends StatelessWidget implements PreferredSizeWidget {
           Expanded(
             child: IconButton(
               onPressed: () {
-                goToHomePage(context);
+                goToHomePage(context, false);
               },
               icon: const Icon(Icons.home, size: 30.0),
             ),
