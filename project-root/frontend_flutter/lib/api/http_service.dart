@@ -9,7 +9,13 @@ class UserSession {
   static Future<String?> getUserId() => _storage.read(key: 'userId');
   static Future<String?> getUsername() => _storage.read(key: 'username');
   static Future<String?> getUserEmail() => _storage.read(key: 'userEmail');
+  static Future<String?> getToken() => _storage.read(key: 'token');
+  static Future<String?> getRefreshToken() =>
+      _storage.read(key: 'refreshToken');
   static Future<void> clearSession() => _storage.deleteAll();
+
+  static Future<void> writeData(myKey, myValue) =>
+      _storage.write(key: myKey, value: myValue);
 }
 
 class Bug {
@@ -26,17 +32,18 @@ class Bug {
 
 class BugService {
   Future<List<Bug>> getBugs() async {
-    final userId = await _storage.read(key: 'userId');
-    final userEmail = await _storage.read(key: 'userEmail');
-
-    if (kDebugMode) {
-      print("userId from storage: $userId");
-      print("userEmail from storage: $userEmail");
-    }
+    final userId = UserSession.getUserId();
+    final userToken = UserSession.getToken();
 
     final String baseURL = "http://localhost:8080/api/bugs_found/all/$userId";
 
-    final response = await http.get(Uri.parse(baseURL));
+    final response = await http.get(
+      Uri.parse(baseURL),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $userToken',
+      },
+    );
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
@@ -49,12 +56,13 @@ class BugService {
 
       return bugs;
     } else {
-      throw "Unable to retrieve bug data.";
+      throw "Nie udało się pobrać danych :c";
     }
   }
 }
 
 Future<bool> loginUser(String email, String password) async {
+  UserSession.clearSession();
   const String apiUrl = 'http://localhost:8080/api/auth/login';
 
   try {
@@ -69,18 +77,18 @@ Future<bool> loginUser(String email, String password) async {
 
     if (response.statusCode == 200) {
       final responseBody = jsonDecode(response.body);
-      final token = responseBody['accessToken'];
-      final refreshToken = responseBody['refreshTokenUUID'];
+
+      final token = responseBody['token'];
+      final refreshToken = responseBody['refreshToken'];
       final userId = responseBody['id'];
       final username = responseBody['username'];
       final userEmail = responseBody['email'];
 
-      await _storage.write(key: 'jwt_token', value: token);
-      await _storage.write(key: 'accessToken', value: token);
-      await _storage.write(key: 'refreshTokenUUID', value: refreshToken);
-      await _storage.write(key: 'userId', value: userId.toString());
-      await _storage.write(key: 'username', value: username.toString());
-      await _storage.write(key: 'userEmail', value: userEmail.toString());
+      UserSession.writeData('token', token.toString());
+      UserSession.writeData('refreshToken', refreshToken.toString());
+      UserSession.writeData('userId', userId.toString());
+      UserSession.writeData('username', username.toString());
+      UserSession.writeData('userEmail', userEmail.toString());
 
       return true;
     } else {
