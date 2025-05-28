@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import org.locationtech.jts.geom.Point;
 
+import java.util.Date;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -28,7 +29,7 @@ public class BugFound {
     private double longitude;
 
     @Column(name = "created_at", columnDefinition = "timestamp default now()")
-    private LocalDateTime createdAt;
+    private Date createdAt;
 
     @ManyToOne
     @JoinColumn(name = "bug_id", nullable = false)

@@ -41,7 +41,6 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request){
 
-        System.out.println(request);
         if(request.getEmail() == null || request.getPassword() == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -76,34 +75,18 @@ public class AuthController {
     }
 
 
-/*    @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody RegisterRequest request) {
-        if (clientService.findClientByName(request.getUsername()) != null) {
-            return new ResponseEntity<>("Error: Username is already taken!", HttpStatus.CONFLICT);
-        }
-
-        Client newClient = new Client();
-        newClient.setUsername(request.getUsername());
-        newClient.setEmail(request.getEmail());
-        newClient.setPassword(encoder.encode(request.getPassword()));
-        newClient = clientService.addClient(newClient);
-        System.out.println(newClient);
-
-        String accessToken = jwtUtils.generateToken(newClient);
-
-        RefreshToken refreshToken = tokenService.createToken(newClient);
-        return new ResponseEntity<>(new JwtResponse(accessToken, refreshToken.getToken(), newClient.getId(),
-                newClient.getUsername(), newClient.getEmail()), HttpStatus.CREATED);
-    }*/
-
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegisterRequest request) {
-        Client client  = clientService.findClientByName(request.getUsername());
-
-        /*Long id = clientService.fRegisterUser(request.getUsername(), request.getEmail(), encoder.encode(request.getPassword()));
+        if(request.getUsername() == null || request.getEmail() == null || request.getPassword() == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Long id = clientService.fRegisterUser(request.getUsername(), request.getEmail(), encoder.encode(request.getPassword()));
         if(id==0){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
-        }*/
+        }
+
+
+/*        Client client  = clientService.findClientByName(request.getUsername());
 
         if(client!=null){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -113,16 +96,10 @@ public class AuthController {
         newClient.setUsername(request.getUsername());
         newClient.setEmail(request.getEmail());
         newClient.setPassword(encoder.encode(request.getPassword()));
-        clientService.addClient(newClient);
+        clientService.addClient(newClient);*/
 
 
         return new ResponseEntity<>(HttpStatus.CREATED);
-/*        Client client = clientService.findClientById(id);
-        RefreshToken refreshToken = tokenService.createToken(client);
-        String accessToken = jwtUtils.generateToken(client);
-        return new ResponseEntity<>(new JwtResponse(accessToken, refreshToken.getToken(), client.getId(),
-                client.getUsername(), client.getEmail()), HttpStatus.CREATED);*/
-
 
     }
 
@@ -140,14 +117,6 @@ public class AuthController {
         return new ResponseEntity<>(new JwtResponse(newAccessToken, token.getToken(), client.getId(), client.getUsername(), client.getEmail()), HttpStatus.OK);
 
     }
-
-/*    @PostMapping("/test")
-    public String test(@RequestBody Map<String, String> payload) {
-        String username = payload.get("username");
-        String token = jwtUtils.generateToken(clientService.findClientByName(username)).getToken();
-        System.out.println(token);
-        return token;
-    }*/
 
 
 }

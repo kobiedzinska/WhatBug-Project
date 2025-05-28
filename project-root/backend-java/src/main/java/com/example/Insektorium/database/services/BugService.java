@@ -32,10 +32,12 @@ public class BugService {
         bugRepository.delete(bug);
     }
 
-    public Bug getBugById(Long id){
+    public Bug findBugById(Long id){
         return bugRepository.findById(id).orElse(null);
     }
 
-
+    public Bug findBugByName(String name){
+        return bugRepository.findBugByName(name);
+    }
 
 }

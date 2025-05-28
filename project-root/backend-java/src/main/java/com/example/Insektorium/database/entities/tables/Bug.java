@@ -37,10 +37,6 @@ public class Bug {
     private Float avgWeight;
     private Float protein;
 
-    @Column(name = "created_at", updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreationTimestamp
-    private Date createdAt;
 
     @Column(columnDefinition = "BLOB")
     private String imageBit;

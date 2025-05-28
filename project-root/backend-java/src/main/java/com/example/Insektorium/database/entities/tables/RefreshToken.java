@@ -12,16 +12,6 @@ import java.time.Instant;
 @Table(name = "tokens")
 public class RefreshToken {
 
-/*
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    */
-/*    @Id
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "client_id")
-    private Client client;
-    */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
