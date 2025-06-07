@@ -48,11 +48,13 @@ public class JwtUtil {
     }
 
     public Long getIdFromToken(String token){
-        return Long.parseLong(Jwts.parserBuilder()
+        Object clientId = Jwts.parserBuilder()
                 .setSigningKey(key).build()
                 .parseClaimsJws(token)
                 .getBody()
-                .getId());
+                .get("client_id");
+
+        return clientId != null ? Long.valueOf(clientId.toString()) : null;
     }
 
     public boolean validateJwtToken(String token) {
