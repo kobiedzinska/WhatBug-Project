@@ -44,4 +44,8 @@ public class TokenService {
         return tokenRepository.save(refreshToken);
 
     }
+
+    public void deleteToken(RefreshToken token) {
+        tokenRepository.delete(token);
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.Insektorium.database.entities.dtos;
+package com.example.Insektorium.database.entities.http;
 
 import lombok.Getter;
 

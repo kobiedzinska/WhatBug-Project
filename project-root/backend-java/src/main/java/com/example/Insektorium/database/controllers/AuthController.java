@@ -1,10 +1,6 @@
 package com.example.Insektorium.database.controllers;
 
-import com.example.Insektorium.database.entities.dtos.ClientDTO;
-import com.example.Insektorium.database.entities.dtos.LoginRequest;
-import com.example.Insektorium.database.entities.dtos.RefreshRequest;
-import com.example.Insektorium.database.entities.dtos.RegisterRequest;
-import com.example.Insektorium.database.entities.entities.JwtResponse;
+import com.example.Insektorium.database.entities.http.*;
 import com.example.Insektorium.database.entities.tables.Client;
 import com.example.Insektorium.database.entities.tables.RefreshToken;
 import com.example.Insektorium.database.services.ClientService;
@@ -19,8 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
-import java.util.Date;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -116,6 +110,19 @@ public class AuthController {
 
         return new ResponseEntity<>(new JwtResponse(newAccessToken, token.getToken(), client.getId(), client.getUsername(), client.getEmail()), HttpStatus.OK);
 
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(@RequestBody LogoutRequest request){
+        String refreshTokenValue = request.getToken();
+        RefreshToken token = tokenService.findTokenByTokenValue(refreshTokenValue);
+        if(token == null) return new ResponseEntity<>("No token to send", HttpStatus.FORBIDDEN);//też powinno przekierować na logowanie
+        if(!token.getId().equals(request.getId())) return new ResponseEntity<>("Not your token", HttpStatus.CONFLICT);
+        if (token.getExpiresAt().isBefore(Instant.now())) {
+            return new ResponseEntity<>("Refresh token expired", HttpStatus.UNAUTHORIZED);
+        }
+        tokenService.deleteToken(token);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
