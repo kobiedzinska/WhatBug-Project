@@ -21,7 +21,7 @@ public class ClientService {
         return clientRepository.loginUser(username, password);
     }
     public Long fRegisterUser(String username, String email, String password){
-        return clientRepository.fregisterUser(username, email, password);
+        return clientRepository.fregisterUser(username, email, password, "client");
     }
     public Long floginUser(String username, String password){
         return clientRepository.floginUser(username, password);
