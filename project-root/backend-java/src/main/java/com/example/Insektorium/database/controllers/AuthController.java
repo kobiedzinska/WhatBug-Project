@@ -103,6 +103,7 @@ public class AuthController {
         RefreshToken token = tokenService.findTokenByTokenValue(refreshTokenValue);
         if(token == null) return new ResponseEntity<>("No token to send", HttpStatus.FORBIDDEN);//też powinno przekierować na logowanie
         if (token.getExpiresAt().isBefore(Instant.now())) {
+            tokenService.deleteToken(token);
             return new ResponseEntity<>("Refresh token expired", HttpStatus.UNAUTHORIZED);
         }
         Client client = token.getClient();

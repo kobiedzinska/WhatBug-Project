@@ -46,12 +46,12 @@ public class BugController {
         this.clientService = clientService;
     }
 
-    @PostMapping("/add")
+/*    @PostMapping("/add")
     ResponseEntity<?> addBug(@RequestBody Bug bug){
         return new ResponseEntity<>(bugService.saveBug(bug), HttpStatus.OK);
-    }
+    }*/
 
-    @PostMapping("/analyze")
+    @PostMapping("/add")
     ResponseEntity<?> analyzeBug(@RequestParam("image") MultipartFile image, @RequestParam("lat") double lat,
                                  @RequestParam("lon") double lon, HttpServletRequest request) throws IOException {
         String authHeader = request.getHeader("Authorization");
