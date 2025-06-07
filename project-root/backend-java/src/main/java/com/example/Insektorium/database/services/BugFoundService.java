@@ -1,6 +1,6 @@
 package com.example.Insektorium.database.services;
 
-import com.example.Insektorium.database.entities.BugFound;
+import com.example.Insektorium.database.entities.tables.BugFound;
 import com.example.Insektorium.database.repositories.BugFoundRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +18,6 @@ public class BugFoundService {
     }
 
     public List<BugFound> getAllByClient_Id(Long id){
-        return bugFoundRepository.findAllByClient_Id(id);
+        return bugFoundRepository.findAllByClient_IdOrderByName(id);
     }
 }

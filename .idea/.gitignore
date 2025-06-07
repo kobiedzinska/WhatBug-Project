@@ -6,3 +6,5 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+../project-root/backend-java/src/main/resources/env.properties
+../project-root/backend-java/target/classes/env.properties

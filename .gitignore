@@ -15,7 +15,8 @@ migrate_working_dir/
 *.ipr
 *.iws
 .idea/
-
+project-root/backend-java/src/main/resources/env.properties
+project-root/backend-java/target/classes/env.properties
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
 # is commented out by default.
@@ -29,7 +30,18 @@ migrate_working_dir/
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
-/build/
+**/build/
+
+# iOS
+ios/Flutter/Generated.xcconfig
+ios/Runner.xcworkspace/
+# Android
+android/.gradle/
+android/app/build/
+# Windows, Linux, macOS
+linux/
+windows/
+macos/
 
 # Symbolication related
 app.*.symbols

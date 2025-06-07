@@ -1,6 +1,6 @@
 package com.example.Insektorium.database.services;
 
-import com.example.Insektorium.database.entities.Bug;
+import com.example.Insektorium.database.entities.tables.Bug;
 import com.example.Insektorium.database.repositories.BugRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,10 +32,12 @@ public class BugService {
         bugRepository.delete(bug);
     }
 
-    public Bug getBugById(Long id){
+    public Bug findBugById(Long id){
         return bugRepository.findById(id).orElse(null);
     }
 
-
+    public Bug findBugByName(String name){
+        return bugRepository.findBugByName(name);
+    }
 
 }

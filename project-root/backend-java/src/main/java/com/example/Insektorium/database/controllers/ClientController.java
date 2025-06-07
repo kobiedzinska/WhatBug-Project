@@ -15,9 +15,4 @@ public class ClientController {
     }
 
 
-/*    @RequestBody("/login")
-    public String login(@RequestBody String username, @RequestBody String password){}
-
-    @RequestBody("/register")
-    public String register(@RequestBody String username, @RequestBody String password, @RequestBody String role){}*/
 }
