@@ -16,7 +16,7 @@ public class BugService {
         this.bugRepository = bugRepository;
     }
 
-    public Bug addBug(Bug bug){
+    public Bug saveBug(Bug bug){
         return bugRepository.save(bug);
     }
 

@@ -103,6 +103,7 @@ public class AuthController {
         RefreshToken token = tokenService.findTokenByTokenValue(refreshTokenValue);
         if(token == null) return new ResponseEntity<>("No token to send", HttpStatus.FORBIDDEN);//też powinno przekierować na logowanie
         if (token.getExpiresAt().isBefore(Instant.now())) {
+            tokenService.deleteToken(token);
             return new ResponseEntity<>("Refresh token expired", HttpStatus.UNAUTHORIZED);
         }
         Client client = token.getClient();
@@ -114,10 +115,10 @@ public class AuthController {
 
     @PostMapping("/logout")
     public ResponseEntity<?> logout(@RequestBody LogoutRequest request){
-        String refreshTokenValue = request.getToken();
+        String refreshTokenValue = request.getRefreshToken();
         RefreshToken token = tokenService.findTokenByTokenValue(refreshTokenValue);
         if(token == null) return new ResponseEntity<>("No token to send", HttpStatus.FORBIDDEN);//też powinno przekierować na logowanie
-        if(!token.getId().equals(request.getId())) return new ResponseEntity<>("Not your token", HttpStatus.CONFLICT);
+        if(!token.getId().equals(request.getClientId())) return new ResponseEntity<>("Not your token", HttpStatus.CONFLICT);
         if (token.getExpiresAt().isBefore(Instant.now())) {
             return new ResponseEntity<>("Refresh token expired", HttpStatus.UNAUTHORIZED);
         }

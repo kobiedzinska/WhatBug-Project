@@ -40,7 +40,6 @@ public class TokenService {
             refreshToken.setToken(UUID.randomUUID().toString());
         }while(tokenRepository.findRefreshTokenByToken(refreshToken.getToken()) != null);
 
-
         return tokenRepository.save(refreshToken);
 
     }

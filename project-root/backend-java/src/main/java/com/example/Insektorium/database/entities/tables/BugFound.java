@@ -39,6 +39,10 @@ public class BugFound {
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
+    @Lob
+    @Column(name = "image", columnDefinition = "MEDIUMBLOB")
+    private byte[] image;
+
     @Override
     public String toString() {
         return "BugFound{" +

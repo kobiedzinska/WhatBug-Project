@@ -24,9 +24,9 @@ public class BugFoundController {
     }
 
 
-    @PostMapping("/add/{client_id}")
-    ResponseEntity<?> addBug(@RequestBody BugFoundDTO bugDTO, @PathVariable Long client_id) {
-        Client client = clientService.findClientById(client_id);
+    @PostMapping("/add/{clientId}")
+    ResponseEntity<?> addBug(@RequestBody BugFoundDTO bugDTO, @PathVariable Long clientId) {
+        Client client = clientService.findClientById(clientId);
         if (client == null) return new ResponseEntity<>("Client not found", HttpStatus.NOT_FOUND);
 
         BugFound bug = new BugFound();
@@ -40,8 +40,8 @@ public class BugFoundController {
         return new ResponseEntity<>(bug, HttpStatus.OK);
     }
 
-    @GetMapping("/all/{client_id}")
-    ResponseEntity<?> getAllBugs(@PathVariable Long client_id) {
-        return new ResponseEntity<>(bugFoundService.getAllByClient_Id(client_id), HttpStatus.OK);
+    @GetMapping("/all/{clientId}")
+    ResponseEntity<?> getAllBugs(@PathVariable Long clientId) {
+        return new ResponseEntity<>(bugFoundService.getAllByClient_Id(clientId), HttpStatus.OK);
     }
 }
