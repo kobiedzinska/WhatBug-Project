@@ -44,8 +44,9 @@ public class Client {
    // @OneToMany(mappedBy = "followed", cascade = CascadeType.ALL)
    // private List<Follow> following;
    public void addBug(BugFound bug) {
-       foundBugs.add(bug);
+
        bug.setClient(this);
+       foundBugs.add(bug);
    }
 
     @Override

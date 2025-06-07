@@ -5,6 +5,7 @@ import com.example.Insektorium.database.services.ClientService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class Initializr {
@@ -22,5 +23,10 @@ public class Initializr {
             System.out.println(clientService.getAllUsers());
             System.out.println(bugFoundService.getAllByClient_Id(1L));
         };
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }
