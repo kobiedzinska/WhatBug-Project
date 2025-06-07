@@ -20,12 +20,12 @@ public class BugFound {
     private Long id;
 
     @Column(nullable = false)
-    private String name = "N/A"; // nazwa własna użytkownika, użytkownik będzie mógł nazywać znalezione robaki
+    private String name = "N/A";                                                                                            // nazwa własna użytkownika, użytkownik będzie mógł nazywać znalezione robaki
 
     @Column(columnDefinition = "POINT", nullable = false)
-    private Point location; // do przechowywania współrzędnych geograficznych. Funkcje do tworzenia w database/geometryUtils
+    private Point location;                                                                                             // do przechowywania współrzędnych geograficznych. Funkcje do tworzenia w database/geometryUtils
 
-    private double latitude;    // narazie je zostawiam
+    private double latitude;                                                                                                        // narazie je zostawiam
     private double longitude;
 
     @Column(name = "created_at", columnDefinition = "timestamp default now()")
