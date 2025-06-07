@@ -2,10 +2,12 @@ package com.example.Insektorium.database.entities.http;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 @Data
-
+@Getter
+@Setter
 public class JwtResponse {
     private String accessToken;
     private String type = "Bearer";
