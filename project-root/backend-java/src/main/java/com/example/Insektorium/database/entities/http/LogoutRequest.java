@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class LogoutRequest {
-    private String token;
-    private Long id;
+    private String refreshToken;
+    private Long clientId;
 
 }
